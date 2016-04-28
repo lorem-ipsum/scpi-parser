@@ -739,13 +739,9 @@ int scpiLex_ArbitraryBlockProgramData(lex_state_t * state, scpi_token_t * token)
 
             if (i == 0) {
                 state->pos += arbitraryBlockLength;
-                if ((state->buffer + state->len) >= (state->pos)) {
-                    token->ptr = state->pos - arbitraryBlockLength;
-                    token->len = arbitraryBlockLength;
-                    validData = 1;
-                } else {
-                    validData = 0;
-                }
+                token->ptr = state->pos - arbitraryBlockLength;
+                token->len = arbitraryBlockLength;
+                validData = 1;
             } else if (iseos(state)) {
                 validData = 0;
             }
